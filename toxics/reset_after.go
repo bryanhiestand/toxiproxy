@@ -39,6 +39,7 @@ func (t *ResetAfterToxic) Pipe(stub *ToxicStub) {
 			stub.Output <- c
 		case <-time.After(t.timeoutDelay()):
 			stub.Close()
+			return
 		}
 	}
 }
